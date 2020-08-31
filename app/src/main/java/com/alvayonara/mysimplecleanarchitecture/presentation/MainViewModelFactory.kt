@@ -7,7 +7,9 @@ import com.alvayonara.mysimplecleanarchitecture.domain.MessageUseCase
 import java.lang.IllegalArgumentException
 
 /**
+ *
  * This class is used to initiate a ViewModel which has parameters.
+ *
  */
 class MainViewModelFactory(
     private var messageUseCase: MessageUseCase

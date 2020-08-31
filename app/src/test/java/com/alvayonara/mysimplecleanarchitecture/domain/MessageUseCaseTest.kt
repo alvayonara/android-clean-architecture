@@ -8,6 +8,12 @@ import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.junit.MockitoJUnitRunner
 
+/**
+ *
+ * Kelas yang ada di Domain Layer ini tidak tergantung dengan layer lainnya,
+ * sehingga dapat membuat testing menjadi lebih mudah.
+ *
+ */
 @RunWith(MockitoJUnitRunner::class)
 class MessageUseCaseTest {
 
@@ -22,10 +28,14 @@ class MessageUseCaseTest {
         `when`(messageRepository.getWelcomeMessage(NAME)).thenReturn(dummyMessage)
     }
 
+    // Mencoba menjalankan fungsi di dalam MessageUseCase dan memeriksa fungsi dan argument yang dimasukkan.
     @Test fun `should get data from repository`() {
         messageUseCase.getMessage(NAME)
 
         verify(messageRepository).getWelcomeMessage(NAME)
+
+        // Memastikan semua interaksi sudah di-verify.
+        // Fungsi ini akan membuat test gagal jika ada interaksi yang belum di-verify.
         verifyNoMoreInteractions(messageRepository)
     }
 
